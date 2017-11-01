@@ -124,4 +124,8 @@ apt-get update; apt-get install -y powershell:
     - unless: dpkg -l | grep powershell
 {% endif %}
 
+setup-firefox-nightly:
+  cmd.script:
+    - source: salt://linux/common/files/ubuntu-mozilla-daily.sh
+    - unless: dpkg -l | grep firefox-trunk
 
