@@ -11,6 +11,8 @@ always-packages:
       - curl
       # For encrypting my Salt private values.
       - gnupg
+      # for encrypting passwords and other related tasks
+      - openssl
       # for encrypted storage, remember it requires a reboot
       # to work
       - tcplay
@@ -30,6 +32,8 @@ always-packages:
       - openjdk-9-jdk
       # image editor
       - gimp
+      # command line image manipulation
+      - imagemagick
       # usually present, but be explicit
       - firefox
       # remote access
@@ -128,4 +132,10 @@ setup-firefox-nightly:
   cmd.script:
     - source: salt://linux/common/files/ubuntu-mozilla-daily.sh
     - unless: dpkg -l | grep firefox-trunk
+
+# printer drivers
+
+# ip addresses (consistency)
+
+# /etc/hostnames.
 

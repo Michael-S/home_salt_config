@@ -5,16 +5,19 @@
 include:
   - .common
   - .plankton
+  - .accounts
 
 {% elif grains['id'] == 'squidward' %}
 include:
   - .common
   - .squidward
+  - .accounts
 
 {% elif grains['id'] == 'tweety' %}
 include:
   - .common
-  - .squidward
+  - .tweety
+  # no .accounts, this device just belongs to one family member
 
 {% endif %}
 
