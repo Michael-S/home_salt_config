@@ -3,6 +3,14 @@
 # to make it work with distributions like Fedora, OpenSUSE,
 # NixOS, GuixSD
 
+# for some reason this reliably fails when installed with
+# plain old 'apt-get install openjdk-9-jdk' or the Salt pkg.installed
+# equivalent.  So fix it here.
+apt-get -o Dpkg::Options::="--force-overwrite" install -y openjdk-9-jdk:
+  cmd.run:
+    - unless: dpkg -l | grep '^ii  openjdk-9-jdk:amd64'
+
+
 always-packages:
   pkg.installed:
     - pkgs:
@@ -29,7 +37,6 @@ always-packages:
       - sbcl
       # for general Java development plus minecraft
       - maven
-      - openjdk-9-jdk
       # image editor
       - gimp
       # command line image manipulation
@@ -133,9 +140,20 @@ setup-firefox-nightly:
     - source: salt://linux/common/files/ubuntu-mozilla-daily.sh
     - unless: dpkg -l | grep firefox-trunk
 
-# printer drivers
+# enable firewall
+ufw enable:
+  cmd.run:
+    - onlyif: ufw status | grep 'inactive'
 
-# ip addresses (consistency)
+# add firewall rule for SSH 
+ufw allow 22/tcp:
+  cmd.run:
+    - unless: ufw status | grep '22/tcp.*ALLOW'
 
-# /etc/hostnames.
+# add firewall rule for Mobile Shell (mosh)
+ufw allow 60000:61000/udp:
+  cmd.run:
+    - unless: ufw status | grep '60000:61000/udp.*ALLOW'
+
+ 
 
