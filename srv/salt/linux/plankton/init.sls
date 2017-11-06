@@ -2,10 +2,10 @@
 /etc/hosts:
   file.append:
     - text: |
-        192.168.1.12 squidward 
+        192.168.1.12 squidward
         192.168.1.13 bert
 
-# Firewall 
+# Firewall
 
 # Hosted Sandstorm 80 and 443
 ufw allow 80/tcp:
@@ -54,4 +54,39 @@ qemu-and-samba-packages:
       - virt-manager
       - samba
       - smbclient
+
+/etc/fstab:
+  file.managed:
+    - user: root
+    - group: root
+    - source: salt://linux/plankton/files/plankton_fstab
+    - mode: 644
+
+/media/sda2:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+
+/media/sdb2:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+
+/media/sdd2:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+
+/media/sdc1:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
 

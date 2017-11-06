@@ -1,0 +1,35 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# This is the squidward /etc/fstab as of 2017-11-06.
+# If any drives change, or an operating reinstall is required,
+# then this file must be changed.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda5 during installation
+UUID=ebdda311-0cd6-4be4-82c4-b76814bbd4c8 /               ext4    errors=remount-ro 0       1
+# swap was on /dev/sda6 during installation
+UUID=429bcca8-3e62-4440-b9a9-18a01d42dbcb none            swap    sw              0       0
+# swap was on /dev/sdd3 during installation
+UUID=eb7c5687-4618-40bf-a4fe-d2d926fa7b6e none            swap    sw              0       0
+
+# just a data drive, with subvolume for home 
+UUID=1e8c65b6-88ea-4b43-85ce-1aaaf632e3f6 /media/sdb1     btrfs   defaults                0       2 
+# /home
+UUID=1e8c65b6-88ea-4b43-85ce-1aaaf632e3f6 /home           btrfs   defaults,subvolid=1859  0       2 
+
+# windows f drive
+# if windows powers off without fully unmounting the drive,
+# the drive mount fails and boot hangs, so comment out...
+UUID=5E2445FE2445DA23 /media/sdd1_f_drive  ntfs defaults,nofail 0 2 
+# windows other drive
+# if windows powers off without fully unmounting the drive,
+# the drive mount fails and boot hangs, so comment out...
+UUID=45D964EB6A3A0E64 /media/sdc2_windows ntfs defaults,nofail 0 2 
+
+
+# extra drive
+UUID=b95999ae-d0ff-4104-ae10-1b0cb77ee19c /media/sdc3_linux btrfs defaults  0      2
