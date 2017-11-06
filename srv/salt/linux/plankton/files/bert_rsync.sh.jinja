@@ -1,0 +1,47 @@
+#!/bin/bash
+
+linuxnames=({{ pillar['linuxusername1'] }} {{ pillar['linuxusername2'] }} {{ pillar['linuxusername3'] }} {{ pillar['linuxusername4'] }} {{ pillar['linuxusername5'] }} {{ pillar['linuxusername6'] }})
+windowsnames=({{ pillar['windowsusername1'] }} {{ pillar['windowsusername2'] }} {{ pillar['windowsusername3'] }} {{ pillar['windowsusername4'] }} {{ pillar['windowsusername5'] }} {{ pillar['windowsusername6'] }})
+
+for idx in "${!linuxnames[@]}"; do
+echo rsync -ruptz --size-only --progress \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/ \
+    /home/${linuxnames[$idx]}/
+rsync -ruptz --size-only --progress \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/ \
+    /home/${linuxnames[$idx]}/
+echo rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Documents/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Documents/
+rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Documents/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Documents/
+echo rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Downloads/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Downloads/
+rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Downloads/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Downloads/
+echo rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Pictures/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Pictures/
+rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Pictures/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Pictures/
+echo rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Videos/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Videos/
+rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Videos/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Videos/
+echo rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Music/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Music/
+rsync -ruptz --size-only --progress \
+    /home/${linuxnames[$idx]}/Music/ \
+    ${windowsnames[$idx]}@bert:/cygdrive/g/userdata/${windowsnames[$idx]}/Music/
+
+done
+
+date > /root/backup_process/bert_rsync_last.txt
+

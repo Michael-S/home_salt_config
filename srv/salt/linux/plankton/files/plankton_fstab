@@ -20,7 +20,7 @@ UUID=c5de4015-e3e9-46ec-b966-4abd878dc5c5 /media/sda2     btrfs   defaults   0  
 # /dev/sdb2
 UUID=0e5bc52b-4598-4899-85a3-4c49f61af0d2 /media/sdb2     btrfs   defaults   0    2
 # /dev/sdd2
-UUID=f7e3891b-19c0-42bc-a5b8-ce1082beee3e /media/sdd2     btrfs   defaults   0    2 
+UUID=f7e3891b-19c0-42bc-a5b8-ce1082beee3e /media/sdd2     btrfs   defaults   0    2
 
 # /opt on sda2 subvolume opta
 UUID=c5de4015-e3e9-46ec-b966-4abd878dc5c5 /opt     btrfs   defaults,subvol=opta   0    2

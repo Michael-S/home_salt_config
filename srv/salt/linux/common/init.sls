@@ -145,7 +145,7 @@ ufw enable:
   cmd.run:
     - onlyif: ufw status | grep 'inactive'
 
-# add firewall rule for SSH 
+# add firewall rule for SSH
 ufw allow 22/tcp:
   cmd.run:
     - unless: ufw status | grep '22/tcp.*ALLOW'
@@ -155,5 +155,5 @@ ufw allow 60000:61000/udp:
   cmd.run:
     - unless: ufw status | grep '60000:61000/udp.*ALLOW'
 
- 
+
 

@@ -47,13 +47,14 @@ ufw allow 65001/udp:
     - unless: ufw status | grep '65001/udp.*ALLOW'
 
 # Additional software packages only on this machine
-qemu-and-samba-packages:
+qemu-and-samba-and-anacron-packages:
   pkg.installed:
     - pkgs:
       - qemu-kvm # requires a restart after install, typically
       - virt-manager
       - samba
       - smbclient
+      - anacron
 
 /etc/fstab:
   file.managed:
@@ -98,3 +99,48 @@ qemu-and-samba-packages:
     - mode: 644
     - source: salt://linux/plankton/files/plankton_smb.conf
     - makedirs: True
+
+# backup process config
+/root/backup_process:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 700
+    - makedirs: True
+
+/root/backup_process/bert_rsync.sh:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 700
+    - makedirs: True
+    - source: salt://linux/plankton/files/bert_rsync.sh.jinja
+    - template: jinja
+
+/root/backup_process/plankton_squidward_rsync.sh:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 700
+    - makedirs: True
+    - source: salt://linux/plankton/files/plankton_squidward_rsync.sh.jinja
+    - template: jinja
+
+/root/backup_process/weekly_rsync.sh:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 700
+    - makedirs: True
+    - source: salt://linux/plankton/files/weekly_rsync.sh.jinja
+    - template: jinja
+
+# Anacrontab to run the backup scripts
+/etc/anacrontab:
+  file.append:
+    - text: |
+        3       15      plankton_squidward_rsync  /root/backup_process/plankton_squidward_rsync.sh
+        3       45      bert_rsync                /root/backup_process/bert_rsync.sh
+        7       30      weekly_rsync              /root/backup_process/weekly_rsync.sh
+
+

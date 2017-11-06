@@ -16,19 +16,19 @@ UUID=429bcca8-3e62-4440-b9a9-18a01d42dbcb none            swap    sw            
 # swap was on /dev/sdd3 during installation
 UUID=eb7c5687-4618-40bf-a4fe-d2d926fa7b6e none            swap    sw              0       0
 
-# just a data drive, with subvolume for home 
-UUID=1e8c65b6-88ea-4b43-85ce-1aaaf632e3f6 /media/sdb1     btrfs   defaults                0       2 
+# just a data drive, with subvolume for home
+UUID=1e8c65b6-88ea-4b43-85ce-1aaaf632e3f6 /media/sdb1     btrfs   defaults                0       2
 # /home
-UUID=1e8c65b6-88ea-4b43-85ce-1aaaf632e3f6 /home           btrfs   defaults,subvolid=1859  0       2 
+UUID=1e8c65b6-88ea-4b43-85ce-1aaaf632e3f6 /home           btrfs   defaults,subvolid=1859  0       2
 
 # windows f drive
 # if windows powers off without fully unmounting the drive,
 # the drive mount fails and boot hangs, so comment out...
-UUID=5E2445FE2445DA23 /media/sdd1_f_drive  ntfs defaults,nofail 0 2 
+UUID=5E2445FE2445DA23 /media/sdd1_f_drive  ntfs defaults,nofail 0 2
 # windows other drive
 # if windows powers off without fully unmounting the drive,
 # the drive mount fails and boot hangs, so comment out...
-UUID=45D964EB6A3A0E64 /media/sdc2_windows ntfs defaults,nofail 0 2 
+UUID=45D964EB6A3A0E64 /media/sdc2_windows ntfs defaults,nofail 0 2
 
 
 # extra drive

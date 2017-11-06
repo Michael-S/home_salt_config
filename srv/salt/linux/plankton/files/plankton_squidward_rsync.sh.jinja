@@ -1,0 +1,31 @@
+#!/bin/bash
+# let git and Mercurial do the heavy lifting for cloned repositories
+ssh {{ pillar['linuxusername1'] }}@plankton /home/{{ pillar['linuxusername1'] }}/Documents/workspace/update_clones.sh
+ssh {{ pillar['linuxusername1'] }}@squidward /home/{{ pillar['linuxusername1'] }}/Documents/workspace/update_clones.sh
+
+for name in {{ pillar['linuxusername1'] }} {{ pillar['linuxusername2'] }} {{ pillar['linuxusername3'] }} {{ pillar['linuxusername4'] }} {{ pillar['linuxusername5'] }} {{ pillar['linuxusername6'] }} ; do
+    echo rsync -av --progress  $name@squidward:/home/$name/Documents/ /home/$name/Documents/
+    rsync -av --progress  $name@squidward:/home/$name/Documents/ /home/$name/Documents/
+    echo rsync -av --progress  $name@squidward:/home/$name/Pictures/ /home/$name/Pictures/
+    rsync -av --progress  $name@squidward:/home/$name/Pictures/ /home/$name/Pictures/
+    echo rsync -av --progress  $name@squidward:/home/$name/Music/ /home/$name/Music/
+    rsync -av --progress  $name@squidward:/home/$name/Music/ /home/$name/Music/
+    echo rsync -av --progress  $name@squidward:/home/$name/Videos/ /home/$name/Videos/
+    rsync -av --progress  $name@squidward:/home/$name/Videos/ /home/$name/Videos/
+    echo rsync -av --progress  $name@squidward:/home/$name/Desktop/ /home/$name/Desktop/
+    rsync -av --progress  $name@squidward:/home/$name/Desktop/ /home/$name/Desktop/
+    echo rsync -av --progress  /home/$name/Documents/ $name@squidward:/home/$name/Documents/
+    rsync -av --progress  /home/$name/Documents/ $name@squidward:/home/$name/Documents/
+    echo rsync -av --progress  /home/$name/Pictures/ $name@squidward:/home/$name/Pictures/
+    rsync -av --progress  /home/$name/Pictures/ $name@squidward:/home/$name/Pictures/
+    echo rsync -av --progress  /home/$name/Music/ $name@squidward:/home/$name/Music/
+    rsync -av --progress  /home/$name/Music/ $name@squidward:/home/$name/Music/
+    echo rsync -av --progress  /home/$name/Videos/ $name@squidward:/home/$name/Videos/
+    rsync -av --progress  /home/$name/Videos/ $name@squidward:/home/$name/Videos/
+    echo rsync -av --progress  /home/$name/Desktop/ $name@squidward:/home/$name/Desktop/
+    rsync -av --progress  /home/$name/Desktop/ $name@squidward:/home/$name/Desktop/
+done
+
+
+date > /root/backup_process/plankton_squidward_rsync_last.txt
+

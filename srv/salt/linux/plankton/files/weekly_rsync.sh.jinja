@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# sandstorm backup to {{ pillar['linuxusername1'] }}'s account
+rsync -av --progress --delete /opt/sandstorm/ {{ pillar['linuxusername1'] }}@plankton:/home/{{ pillar['linuxusername1'] }}/Documents/sandstorm/
+su -c "rsync -av --delete --progress /home/{{ pillar['linuxusername1'] }}/Documents/sandstorm/ {{ pillar['linuxusername1'] }}@squidward:/home/{{ pillar['linuxusername1'] }}/Documents/sandstorm/" {{ pillar['linuxusername1'] }}
+
+
+rsync -av --progress --delete /home/{{ pillar['linuxusername5'] }}/Documents/ /media/sda2/homea/{{ pillar['linuxusername5'] }}/Documents/
+rsync -av --progress --delete /home/{{ pillar['linuxusername5'] }}/Pictures/ /media/sda2/homea/{{ pillar['linuxusername5'] }}/Pictures/
+rsync -av --progress --delete /home/{{ pillar['linuxusername5'] }}/Music/ /media/sda2/homea/{{ pillar['linuxusername5'] }}/Music/
+rsync -av --progress --delete /home/{{ pillar['linuxusername5'] }}/Videos/ /media/sda2/homea/{{ pillar['linuxusername5'] }}/Videos/
+rsync -av --progress --delete /home/{{ pillar['linuxusername5'] }}/Desktop/ /media/sda2/homea/{{ pillar['linuxusername5'] }}/Desktop/
+
+
+rsync -av --progress --delete /home/{{ pillar['linuxusername4'] }}/Documents/ /media/sda2/homea/{{ pillar['linuxusername4'] }}/Documents/
+rsync -av --progress --delete /home/{{ pillar['linuxusername4'] }}/Pictures/ /media/sda2/homea/{{ pillar['linuxusername4'] }}/Pictures/
+rsync -av --progress --delete /home/{{ pillar['linuxusername4'] }}/Music/ /media/sda2/homea/{{ pillar['linuxusername4'] }}/Music/
+rsync -av --progress --delete /home/{{ pillar['linuxusername4'] }}/Videos/ /media/sda2/homea/{{ pillar['linuxusername4'] }}/Videos/
+rsync -av --progress --delete /home/{{ pillar['linuxusername4'] }}/Desktop/ /media/sda2/homea/{{ pillar['linuxusername4'] }}/Desktop/
+
+rsync -av --progress --delete /home/{{ pillar['linuxusername6'] }}/Documents/ /media/sda2/homea/{{ pillar['linuxusername6'] }}/Documents/
+rsync -av --progress --delete /home/{{ pillar['linuxusername6'] }}/Pictures/ /media/sda2/homea/{{ pillar['linuxusername6'] }}/Pictures/
+rsync -av --progress --delete /home/{{ pillar['linuxusername6'] }}/Music/ /media/sda2/homea/{{ pillar['linuxusername6'] }}/Music/
+rsync -av --progress --delete /home/{{ pillar['linuxusername6'] }}/Videos/ /media/sda2/homea/{{ pillar['linuxusername6'] }}/Videos/
+rsync -av --progress --delete /home/{{ pillar['linuxusername6'] }}/Desktop/ /media/sda2/homea/{{ pillar['linuxusername6'] }}/Desktop/
+
+rsync -av --progress --delete /home/{{ pillar['linuxusername2'] }}/Documents/ /media/sda2/homea/{{ pillar['linuxusername2'] }}/Documents/
+rsync -av --progress --delete /home/{{ pillar['linuxusername2'] }}/Pictures/ /media/sda2/homea/{{ pillar['linuxusername2'] }}/Pictures/
+rsync -av --progress --delete /home/{{ pillar['linuxusername2'] }}/Music/ /media/sda2/homea/{{ pillar['linuxusername2'] }}/Music/
+rsync -av --progress --delete /home/{{ pillar['linuxusername2'] }}/Videos/ /media/sda2/homea/{{ pillar['linuxusername2'] }}/Videos/
+rsync -av --progress --delete /home/{{ pillar['linuxusername2'] }}/Desktop/ /media/sda2/homea/{{ pillar['linuxusername2'] }}/Desktop/
+
+rsync -av --progress --delete /home/{{ pillar['linuxusername1'] }}/Documents/ /media/sda2/homea/{{ pillar['linuxusername1'] }}/Documents/
+rsync -av --progress --delete /home/{{ pillar['linuxusername1'] }}/Pictures/ /media/sda2/homea/{{ pillar['linuxusername1'] }}/Pictures/
+rsync -av --progress --delete /home/{{ pillar['linuxusername1'] }}/Music/ /media/sda2/homea/{{ pillar['linuxusername1'] }}/Music/
+rsync -av --progress --delete /home/{{ pillar['linuxusername1'] }}/Videos/ /media/sda2/homea/{{ pillar['linuxusername1'] }}/Videos/
+rsync -av --progress --delete /home/{{ pillar['linuxusername1'] }}/Desktop/ /media/sda2/homea/{{ pillar['linuxusername1'] }}/Desktop/
+
+rsync -av --progress --delete /opt/ /media/sdb2/optb/
+rsync -av --progress --delete /srv/ /media/sdb2/srvb/
+
+# backup the backup scripts
+rsync -av --progress --delete /root/backup_process/*.sh {{ pillar['linuxusername1'] }}@plankton:/home/{{ pillar['linuxusername1'] }}/Documents/backup_process/
+su -c "rsync -av --progress --delete /home/{{ pillar['linuxusername1'] }}/Documents/backup_process/ {{ pillar['linuxusername1'] }}@squidward:/home/{{ pillar['linuxusername1'] }}/Documents/backup_process/" {{ pillar['linuxusername1'] }}
+
+date > /root/backup_process/weekly_rsync_last.txt
+
