@@ -90,3 +90,11 @@ qemu-and-samba-packages:
     - mode: 755
     - makedirs: True
 
+# Samba config
+/etc/samba/smb.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - source: salt://linux/plankton/files/plankton_smb.conf
+    - makedirs: True
