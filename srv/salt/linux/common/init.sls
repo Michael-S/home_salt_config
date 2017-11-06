@@ -43,6 +43,8 @@ always-packages:
       - imagemagick
       # usually present, but be explicit
       - firefox
+      # also usually present, but also to be explicit for email
+      - thunderbird
       # remote access
       - openssh-server
       - mosh
