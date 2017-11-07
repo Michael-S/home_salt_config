@@ -1,0 +1,29 @@
+I started with Salt on Linux first, so I already
+had my Salt master all set up on my server 'plankton'.
+
+In the Windows installation, in the search bar
+in the bottom left search for WordPad and then
+right click on it and select "Run as Administrator".  Click
+OK or Yes when prompted.  In WordPad use File->Open and then select
+C:\Windows\system32\drivers\etc\hosts
+open it and add a line
+192.168.1.11  plankton
+(replace 192.168.1.11 with the IP address of your Salt master server
+and plankton with your Salt master hostname).
+then save and exit.
+
+Download the latest Salt package for Windows from
+https://docs.saltstack.com/en/latest/topics/installation/windows.html
+and install it, entering the Salt master hostname and the Windows machine
+hostname in the appropriate input box.
+
+In the Windows search bar search for PowerShell and then right
+click and select "Run as Administrator".  Click OK or Yes when
+prompted.  Then type or paste into the PowerShell prompt
+Get-Service | Where-Object {$_.name -eq "salt-minion"}
+and press enter.  You should get Status value "Running".
+From there, the Salt master should be able to add the minion.
+sudo salt-key -A
+
+
+
