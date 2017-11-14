@@ -29,4 +29,8 @@ chocopackages.ps1:
     - shell: powershell
     - source: salt://windows/common/files/chocopackages.ps1
 
+#echo $PSVersionTable.PSVersion:
+#  cmd.run:
+#    - shell: powershell
+
 
