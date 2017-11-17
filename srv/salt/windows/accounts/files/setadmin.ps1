@@ -28,3 +28,7 @@ if ($alreadyadmin) {
 $group.add("WinNT://$Computer/$env:shouldbeadminusername,user")
   echo $env:shouldbeadminusername added to administrators.
 }
+
+echo Admin accounts are $adminaccounts
+
+echo Salt is running as: $env
