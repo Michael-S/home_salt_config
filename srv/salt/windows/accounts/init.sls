@@ -29,3 +29,7 @@ makeadmin-{{ user }}:
 
 
 {% endfor %}
+
+# We need some authorization privileges that admin accounts don't get by default
+# seTakeOwnershipPrivilege, SeRestorePrivilege and SeBackupPrivilege
+

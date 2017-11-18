@@ -1,4 +1,6 @@
 
+# For some reason using Salt file.managed to make the G:\userdata folder
+# didn't work, so I'm doing it through a powershell script.
 makeuserdata.ps1:
   cmd.script:
     - shell: powershell
