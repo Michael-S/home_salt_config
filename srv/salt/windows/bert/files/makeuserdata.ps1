@@ -2,7 +2,7 @@
 $gdriveuserdataexists = Test-Path G:\userdata
 if (-not $gdriveuserdataexists) {
     New-Item -ItemType Directory -Force -Path G:\userdata
-    echo G:\userdata created.
+    echo "G:\userdata created."
 } else {
-    echo G:\userdata already exists.
-} 
+    echo "G:\userdata already exists."
+}

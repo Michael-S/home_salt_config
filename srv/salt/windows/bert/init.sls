@@ -12,14 +12,14 @@ G:\userdata\Set-KnownFolderPath.ps1:
     - win_owner: {{ pillar['windowsusername1'] }}
     - win_perms:
         {% for user in [
-            (pillar['windowsusername1']), (pillar['windowsusername2']), (pillar['windowsusername3']), 
+            (pillar['windowsusername1']), (pillar['windowsusername2']), (pillar['windowsusername3']),
             (pillar['windowsusername4']), (pillar['windowsusername5']), (pillar['windowsusername6']) ] %}
         - {{ user }}:
           perms: full_control
         {% endfor %}
 
 {% for user in [
-       (pillar['windowsusername1']), (pillar['windowsusername2']), (pillar['windowsusername3']), 
+       (pillar['windowsusername1']), (pillar['windowsusername2']), (pillar['windowsusername3']),
        (pillar['windowsusername4']), (pillar['windowsusername5']), (pillar['windowsusername6']) ] %}
 
 G:\userdata\{{ user }}:

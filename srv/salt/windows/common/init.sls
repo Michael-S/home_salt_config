@@ -3,7 +3,7 @@
 # I thought I could use nuget, but that is for
 # people developing software with .NET.  I need
 # the Chocolatey program https://chocolatey.org/
-    
+
 
 # in order to run the Chocolatey installer,
 # we need a PowerShell execution policy check

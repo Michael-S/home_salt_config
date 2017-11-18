@@ -11,6 +11,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 echo "Chocolately already installed, attempting an upgrade."
 & 'C:\ProgramData\Chocolatey\bin\choco.exe' upgrade chocolatey '--yes'
- 
+
 }
 

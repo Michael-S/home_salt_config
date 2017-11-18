@@ -17,7 +17,24 @@ user-{{ user }}:
 
 {% endfor %}
 
+
+# We need some authorization privileges that admin accounts don't get by default
+# seTakeOwnershipPrivilege, SeRestorePrivilege and SeBackupPrivilege
+
+C:\Windows\Temp\UserRights.ps1:
+  file.managed:
+    - source: salt://windows/accounts/files/UserRights.ps1
+
+# Give the account Salt runs over those privileges.
+C:\Windows\Temp\FileManagementPrivileges.ps1 -admin:
+  cmd.script:
+    - source: salt://windows/accounts/files/FileManagementPrivileges.ps1
+    - shell: powershell
+    - env:
+       - adminuser: "{{ grains['windowsdomain'] }}\\{{ grains['username'] }}"
+
 # make two users admin
+# and grant them those privileges
 {% for user in [(pillar['windowsusername1']), (pillar['windowsusername2'])] %}
 makeadmin-{{ user }}:
   cmd.script:
@@ -25,11 +42,15 @@ makeadmin-{{ user }}:
     - source: salt://windows/accounts/files/setadmin.ps1
     - shell: powershell
     - env:
-      - shouldbeadminusername: "{{ user }}" 
+      - shouldbeadminusername: "{{ user }}"
 
+C:\Windows\Temp\FileManagementPrivileges.ps1 -{{ user }}:
+  cmd.script:
+    - source: salt://windows/accounts/files/FileManagementPrivileges.ps1
+    - shell: powershell
+    - env:
+       - adminuser: {{ user }}
 
 {% endfor %}
 
-# We need some authorization privileges that admin accounts don't get by default
-# seTakeOwnershipPrivilege, SeRestorePrivilege and SeBackupPrivilege
 

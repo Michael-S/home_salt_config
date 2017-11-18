@@ -1,4 +1,4 @@
-echo Changing file locations for "$env:movedusername"
+echo "Changing file locations for $env:movedusername"
 . G:\userdata\Set-KnownFolderPath.ps1
 $array = "Desktop","Documents","Videos","Downloads","Pictures","Music"
 ForEach ($value in $array) {

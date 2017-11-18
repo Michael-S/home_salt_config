@@ -1,4 +1,4 @@
-<# 
+<#
 Make sure the Chocolatey packages we expect
 are installed and up to date.
 #>
