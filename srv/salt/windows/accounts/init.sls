@@ -26,6 +26,9 @@ C:\Windows\Temp\UserRights.ps1:
     - source: salt://windows/accounts/files/UserRights.ps1
 
 # Give the account Salt runs over those privileges.
+# ... doesn't seem to work, I get PowerShell errors and this appears
+# to be a known issue for local admin accounts and some of the scripts
+# I use.
 C:\Windows\Temp\FileManagementPrivileges.ps1 -admin:
   cmd.script:
     - source: salt://windows/accounts/files/FileManagementPrivileges.ps1
