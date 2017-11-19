@@ -34,7 +34,7 @@ C:\Windows\Temp\FileManagementPrivileges.ps1 -admin:
     - source: salt://windows/accounts/files/FileManagementPrivileges.ps1
     - shell: powershell
     - env:
-       - adminuser: "{{ grains['windowsdomain'] }}\\{{ grains['username'] }}"
+       - adminuser: Administrator
 
 # make two users admin
 # and grant them those privileges
