@@ -1,7 +1,7 @@
 base:
 
   # the Linux boxes
-  'squidward or plankton or tweety':
+  'squidward or plankton or daffy':
     - match: compound
     - linux
 

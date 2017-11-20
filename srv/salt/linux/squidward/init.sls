@@ -26,7 +26,8 @@
   file.directory:
     - user: root
     - group: root
-    - mode: 755
+    # mounted NTFS drives get the 777 perms
+    - mode: 777
     - makedirs: True
 
 /media/sdc3_linux:
@@ -40,6 +41,7 @@
   file.directory:
     - user: root
     - group: root
-    - mode: 755
+    # mounted NTFS drives get the 777 perms
+    - mode: 777
     - makedirs: True
 

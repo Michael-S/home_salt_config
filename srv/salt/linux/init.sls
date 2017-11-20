@@ -13,10 +13,10 @@ include:
   - .squidward
   - .accounts
 
-{% elif grains['id'] == 'tweety' %}
+{% elif grains['id'] == 'daffy' %}
 include:
   - .common
-  - .tweety
+  - .daffy
   # no .accounts, this device just belongs to one family member
 
 {% endif %}
