@@ -1,8 +1,14 @@
 
-{% if grains['id'] == 'bert' or grains['id'] == 'squidward' %}
+{% if grains['id'] == 'bert' %}
 include:
   - .common
-  - .bert
   - .accounts
+  - .bert
+
+{% elif grains['id'] == 'squidward' %}
+include:
+  - .common
+  - .accounts
+  - .squidward
 
 {% endif %}
