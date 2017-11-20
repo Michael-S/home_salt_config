@@ -1,12 +1,16 @@
 base:
 
   # the Linux boxes
-  'squidward or plankton or daffy':
+  'plankton or daffy':
     - match: compound
     - linux
 
   # the Windows boxes
-  'bert or abcdef':
-    - match: compound
+  'bert':
     - windows
 
+  'squidward and G@os:Windows':
+    - windows
+
+  'squidward and G@os_family:Debian':
+    - linux
