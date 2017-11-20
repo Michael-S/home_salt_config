@@ -29,6 +29,7 @@ user-{{ user }}:
       - plugdev
       - lpadmin
       - sambashare
+    - remove_groups: False
 
 # make sure the user has a /home/user/.ssh directory
 ssh-dir-{{ user }}:
