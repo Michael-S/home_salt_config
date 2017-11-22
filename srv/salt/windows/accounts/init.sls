@@ -56,4 +56,16 @@ C:\Windows\Temp\FileManagementPrivileges.ps1 -{{ user }}:
 
 {% endfor %}
 
+# make all users part of the Windows 'Users' group
+{% for user in [pillar['windowsusername1'], pillar['windowsusername2'], pillar['windowsusername3'],
+                pillar['windowsusername4'], pillar['windowsusername5'], pillar['windowsusername6']] %}
 
+C:\Windows\Temp\MakeAccountsUsers-{{user}}:
+  cmd.script:
+    - source: salt://windows/accounts/files/MakeAccountsUsers.ps1
+    - shell: powershell
+    - env:
+      - usertomanage: {{ user }}
+
+
+{% endfor %}
