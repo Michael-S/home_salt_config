@@ -8,7 +8,7 @@ makeuserdata.ps1:
 
 G:\userdata\Set-KnownFolderPath.ps1:
   file.managed:
-    - source: salt://windows/bert/files/Set-KnownFolderPath.ps1
+    - source: salt://windows/common/files/Set-KnownFolderPath.ps1
     - win_owner: {{ pillar['windowsusername1'] }}
     - win_perms:
         {% for user in [
