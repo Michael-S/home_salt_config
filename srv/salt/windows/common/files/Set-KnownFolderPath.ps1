@@ -122,8 +122,14 @@ public extern static int SHSetKnownFolderPath(ref Guid folderId, uint flags, Int
 
     # Validate the path
     if (Test-Path $Path -PathType Container) {
-        # Call SHSetKnownFolderPath
-        return $Type::SHSetKnownFolderPath([ref]$KnownFolders[$KnownFolder], 0, 0, $Path)
+        $current = [Environment]::GetFolderPath($KnownFolder)
+        if ($current -eq $Path) {
+            echo "User $env:username already has $KnownFolder set to $Path."
+        } else {
+            # Call SHSetKnownFolderPath
+            echo "Setting $env:username folder $KnownFolder to $Path."
+            return $Type::SHSetKnownFolderPath([ref]$KnownFolders[$KnownFolder], 0, 0, $Path)
+        }
     } else {
         throw New-Object System.IO.DirectoryNotFoundException "Could not find part of the path $Path."
     }
