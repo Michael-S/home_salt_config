@@ -10,7 +10,7 @@
 # unfortunately, I can't figure out a way to do this
 # with a check, since powershell return values don't seem to
 # fit the 0 success / non-0 failure expected by shell commands or Salt.
-Set-ExecutionPolicy AllSigned:
+Set-ExecutionPolicy RemoteSigned:
   cmd.run:
     - shell: powershell
 
