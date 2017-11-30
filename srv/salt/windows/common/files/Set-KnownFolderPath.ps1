@@ -122,7 +122,7 @@ public extern static int SHSetKnownFolderPath(ref Guid folderId, uint flags, Int
 
     # Validate the path
     if (Test-Path $Path -PathType Container) {
-        # for some reason the [Environment]:GetFolderPath(...) names aren't identical to the ones here.
+        # for some reason the [Environment]::GetFolderPath(...) names aren't identical to the ones here.
         $EnviroKnownFolder = $KnownFolder
         if ($EnviroKnownFolder -ne "Desktop") {
             $EnviroKnownFolder = "My" + $KnownFolder
