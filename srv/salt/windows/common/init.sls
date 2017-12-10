@@ -19,15 +19,15 @@ Set-ExecutionPolicy RemoteSigned:
 #  cmd.run:
 #    - shell: powershell
 
-setup-chocolatey.ps1:
+Setup-Chocolatey.ps1:
   cmd.script:
     - shell: powershell
-    - source: salt://windows/common/files/setup-chocolatey.ps1
+    - source: salt://windows/common/files/Setup-Chocolatey.ps1
 
-chocopackages.ps1:
+ChocoPackages.ps1:
   cmd.script:
     - shell: powershell
-    - source: salt://windows/common/files/chocopackages.ps1
+    - source: salt://windows/common/files/ChocoPackages.ps1
 
 #echo $PSVersionTable.PSVersion:
 #  cmd.run:

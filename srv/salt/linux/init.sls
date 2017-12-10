@@ -18,6 +18,7 @@ include:
   - .common
   - .daffy
   # no .accounts, this device just belongs to one family member
+  # the accounts data has all family accounts
 
 {% endif %}
 

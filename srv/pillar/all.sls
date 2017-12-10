@@ -1,5 +1,8 @@
 #!yaml|gpg
 
+# I use GPG to encrypt my private pillar values, per
+# https://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html
+
 linuxusername1: |
   -----BEGIN PGP MESSAGE-----
   Version: GnuPG v1

@@ -22,12 +22,14 @@ E:\userdata\{{ user }}\{{ dirname }}:
     - makedirs: True
     - user: {{ user }}
 
-. .\Set-KnownFolderPath.ps1; Set-KnownFolderPath -KnownFolder {{ dirname }} {{ user }}:
-  cmd.script:
-    - shell: powershell
-    - source: salt://windows/common/files/Set-KnownFolderPath.ps1 
-    - runas: {{ user }}
-    - password: {{ password }}
+# This does not seem to work, I think it requires Windows 10 Professional and
+# an Active Directory domain.
+#. .\Set-KnownFolderPath.ps1; Set-KnownFolderPath -KnownFolder {{ dirname }} {{ user }}:
+#  cmd.script:
+#    - shell: powershell
+#    - source: salt://windows/common/files/Set-KnownFolderPath.ps1 
+#    - runas: {{ user }}
+#    - password: {{ password }}
 
 {% endfor %}
 
