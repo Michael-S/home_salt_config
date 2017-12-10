@@ -1,10 +1,20 @@
+The content of the file srv/salt/windows/common/files/Set-KnownFolderPaths.ps1
+is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported
+(that is, CC By-SA 3.0) https://creativecommons.org/licenses/by-sa/3.0/
+from https://stackoverflow.com/questions/25709398/set-location-of-special-folders-with-powershell
+
 Indicated content in the file srv/salt/windows/accounts/files/MakeAccountsUsers.ps1 
 is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported 
 (that is, CC By-SA 3.0) https://creativecommons.org/licenses/by-sa/3.0/
+from https://stackoverflow.com/questions/13929960/add-user-to-local-group#14262326
 
-Indicated content in the file /srv/salt/windows/accounts/files/MakeAccountsUsers.ps1
-is licensed under ... 
+Indicated content in the file srv/salt/windows/accounts/files/MakeAccountsUsers.ps1
+is used by permission from https://www.petri.com/use-powershell-to-find-local-groups-and-members 
  
+The content of the file srv/salt/windows/accounts/files/UserRights.ps1 are copyright
+Tony Pompo and licensed under the Microsoft TechNet terms of use.
+
+
 All remaining content Copyright 2017 Mike Swierczek 
 
 Licensed under the Apache License, Version 2.0 (the "License");
