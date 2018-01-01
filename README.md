@@ -1,5 +1,7 @@
 # A Home Salt Config
 
+**Note:** I host all of my git repositories using [gogs.io](https://gogs.io) on the [Sandstorm.io](https://sandstorm.io) open source hosting. I only set up Github as a second remote because everyone checks here first.
+
 Home Salt config for our house. We have four desktops and two laptops, and
 when something goes wrong a rebuild-from-scratch is a real headache.
 
