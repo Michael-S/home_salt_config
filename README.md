@@ -9,6 +9,8 @@ Since I'm comfortable with [Salt Stack](https://saltstack.com/), I've chosen tha
 
 *Unfortunately, SaltStack isn't aimed at home users. Even worse, Windows 10 Home edition does not support the same remote Salt commands and configuration through PowerShell that Windows 10 Professional managed by an Active Directory server would. So this project is not aimed at casual users of Windows or Linux and is not nearly as 'install and click and everything works' as I would like.*  If I had a chance to do this over, I would have picked some other tool.   
 
+NOTE 2019-07-13: at work and in this project, I made a fundamental design error with my Salt configurations.  I tied the machine configuration to the hostname.  This is mostly harmless at home due to the small number of machines.  It's a nightmare with larger deployments, because you have to play careful games and do a lot of testing around hostname pattern matching.  To anyone using Saltstack or contemplating its use: key machine configuration off of Salt Grains assigned in the /etc/salt/grains file.  Then your hostnames and Salt minion names can be whatever you want, and you can search and configure boxes based on Grain assignments.  See https://docs.saltstack.com/en/latest/topics/grains/#grains-in-etc-salt-grains
+
 With that disclaimer in mind, if you are going to proceed with Salt:
 
 To get started, you need a recent version of Salt Stack on all of the machines.
